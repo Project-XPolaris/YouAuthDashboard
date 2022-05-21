@@ -145,16 +145,6 @@ export const request: RequestConfig = {
   middlewares: [],
   requestInterceptors: [
     (url, options) => {
-    const globalWindow = window as any;
-    let newUrl = url;
-      const apiUrl = globalWindow.baseApiUrl;
-      if (apiUrl) {
-        newUrl = newUrl.replace(/^\/api/, apiUrl);
-        console.log(newUrl)
-      }
-      return {url:newUrl, options};
-    },
-    (url, options) => {
       const accessToken  = localStorage.getItem('token');
       if (accessToken) {
         options.headers = {
